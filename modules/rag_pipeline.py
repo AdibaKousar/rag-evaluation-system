@@ -5,9 +5,9 @@ from modules.embeddings import generate_embeddings
 from modules.retriever import search_similar_chunks
 
 
-def generate_rag_answer(question):
+def generate_rag_answer_with_context(question):
     """
-    Generate an answer using retrieved document context.
+    Generate an answer and return the retrieved contexts.
     """
 
     # Step 1: Convert question into an embedding
@@ -18,10 +18,10 @@ def generate_rag_answer(question):
 
     retrieved_chunks = results["documents"][0]
 
-    # Step 3: Combine retrieved chunks into context
+    # Step 3: Combine chunks into context
     context = "\n\n".join(retrieved_chunks)
 
-    # Step 4: Create a prompt for TinyLlama
+    # Step 4: Create prompt for TinyLlama
     prompt = f"""
     You are a helpful AI assistant.
 
@@ -51,4 +51,21 @@ def generate_rag_answer(question):
         ]
     )
 
-    return response["message"]["content"]
+    answer = response["message"]["content"]
+
+    # Step 6: Return answer and retrieved contexts
+    return {
+        "answer": answer,
+        "retrieved_contexts": retrieved_chunks
+    }
+
+
+def generate_rag_answer(question):
+    """
+    Return only the generated answer.
+    Keeps compatibility with the existing RAG test.
+    """
+
+    result = generate_rag_answer_with_context(question)
+
+    return result["answer"]

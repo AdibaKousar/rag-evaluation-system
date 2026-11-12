@@ -1,0 +1,22 @@
+[
+    {
+        "question": "What is artificial intelligence?",
+        "reference": "Artificial Intelligence is a branch of computer science that focuses on creating machines capable of performing tasks that normally require human intelligence."
+    },
+    {
+        "question": "What is machine learning?",
+        "reference": "Machine Learning is a subset of Artificial Intelligence that allows computers to learn from data and improve their performance without being explicitly programmed."
+    },
+    {
+        "question": "What is deep learning?",
+        "reference": "Deep Learning is a subset of Machine Learning that uses artificial neural networks to learn complex patterns from large amounts of data."
+    },
+    {
+        "question": "What is natural language processing?",
+        "reference": "Natural Language Processing is a field of Artificial Intelligence that helps computers understand, interpret, and generate human language."
+    },
+    {
+        "question": "What are the applications of artificial intelligence?",
+        "reference": "Artificial Intelligence is widely used in healthcare, education, banking, transportation, and agriculture."
+    }
+]
