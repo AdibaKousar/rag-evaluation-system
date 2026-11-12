@@ -42,10 +42,10 @@ async def main():
         user_input="What is machine learning?",
 
         response=(
-            "Machine Learning is a subset of Artificial "
-            "Intelligence that allows computers to learn "
-            "from data and improve their performance."
-        )
+    "Machine Learning is a subset of Artificial "
+    "Intelligence that allows computers to learn "
+    "from data and improve their performance."
+)
     )
 
     print("\nANSWER RELEVANCY SCORE:")
