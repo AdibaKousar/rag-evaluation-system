@@ -4,54 +4,54 @@ import asyncio
 from modules.evaluator import (
     build_evaluation_dataset,
     evaluate_faithfulness,
-    evaluate_answer_relevancy
+    evaluate_answer_relevancy,
+    evaluate_context_precision,
+    evaluate_context_recall,
+    evaluate_answer_correctness
 )
 
 
 async def main():
 
-    # Step 1: Build evaluation dataset
-    print("\nBUILDING EVALUATION DATASET...")
+    print("\n========== BUILDING EVALUATION DATASET ==========")
 
     dataset = build_evaluation_dataset()
 
     print("\nTotal Questions:", len(dataset))
 
-
-    # Step 2: Evaluate Faithfulness
-    print("\n========== FAITHFULNESS EVALUATION ==========")
+    # Evaluate all five metrics
+    print("\n========== EVALUATING ALL FIVE METRICS ==========")
 
     faithfulness_scores = await evaluate_faithfulness(dataset)
 
+    answer_relevancy_scores = await evaluate_answer_relevancy(dataset)
 
-    # Step 3: Evaluate Answer Relevancy
-    print("\n========== ANSWER RELEVANCY EVALUATION ==========")
+    context_precision_scores = await evaluate_context_precision(dataset)
 
-    relevancy_scores = await evaluate_answer_relevancy(dataset)
+    context_recall_scores = await evaluate_context_recall(dataset)
 
+    answer_correctness_scores = await evaluate_answer_correctness(dataset)
 
-    # Step 4: Calculate average scores
-    average_faithfulness = (
-        sum(faithfulness_scores) / len(faithfulness_scores)
-    )
+    # Calculate averages
+    results = {
+        "Faithfulness": faithfulness_scores,
+        "Answer Relevancy": answer_relevancy_scores,
+        "Context Precision": context_precision_scores,
+        "Context Recall": context_recall_scores,
+        "Answer Correctness": answer_correctness_scores
+    }
 
-    average_relevancy = (
-        sum(relevancy_scores) / len(relevancy_scores)
-    )
+    print("\n========== FINAL RAG EVALUATION REPORT ==========")
 
+    for metric_name, scores in results.items():
 
-    # Step 5: Display final evaluation summary
-    print("\n========== FINAL EVALUATION REPORT ==========")
+        average = sum(scores) / len(scores)
 
-    print("Total Questions:", len(dataset))
+        print(f"\n{metric_name}:")
+        print("Individual Scores:", scores)
+        print("Average Score:", round(average, 3))
 
-    print("\nFaithfulness Scores:", faithfulness_scores)
-    print("Average Faithfulness:", round(average_faithfulness, 3))
-
-    print("\nAnswer Relevancy Scores:", relevancy_scores)
-    print("Average Answer Relevancy:", round(average_relevancy, 3))
-
-    print("\n=============================================")
+    print("\n========== EVALUATION COMPLETED ==========")
 
 
 asyncio.run(main())
