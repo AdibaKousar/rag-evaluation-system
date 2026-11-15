@@ -1,4 +1,6 @@
-
+import csv
+import os
+from datetime import datetime
 import json
 
 from openai import AsyncOpenAI
@@ -79,19 +81,14 @@ answer_correctness_metric = AnswerCorrectness(
 # STEP 5: BUILD EVALUATION DATASET
 # ==========================================
 
-def build_evaluation_dataset():
 
-    """
-    Generate answers for all evaluation questions
-    and create a RAGAS evaluation dataset.
-    """
+def build_evaluation_dataset(document_id):
 
     with open(
         "data/evaluation_questions.json",
         "r",
         encoding="utf-8"
     ) as file:
-
         questions = json.load(file)
 
     evaluation_samples = []
@@ -103,12 +100,31 @@ def build_evaluation_dataset():
 
         print("\nProcessing question:", question)
 
-        result = generate_rag_answer_with_context(question)
+        result = generate_rag_answer_with_context(
+            question,
+            document_id
+        )
+
+        contexts = result.get("retrieved_contexts") or []
+
+        if isinstance(contexts, str):
+            contexts = [contexts]
+
+        contexts = [
+            str(context)
+            for context in contexts
+            if context and str(context).strip()
+        ]
+
+        if not contexts:
+            contexts = [
+                "No relevant information was retrieved from the document."
+            ]
 
         sample = {
             "user_input": question,
-            "response": result["answer"],
-            "retrieved_contexts": result["retrieved_contexts"],
+            "response": result.get("answer", ""),
+            "retrieved_contexts": contexts,
             "reference": reference
         }
 
@@ -118,27 +134,35 @@ def build_evaluation_dataset():
         evaluation_samples
     )
 
-    return dataset
+    print("\nDataset created:", len(dataset), "samples")
 
+    return dataset
 
 # ==========================================
 # STEP 6: EVALUATE FAITHFULNESS
 # ==========================================
 
-async def evaluate_faithfulness(dataset):
 
-    """Check whether answers are supported by retrieved contexts."""
+async def evaluate_faithfulness(dataset):
 
     scores = []
 
     for index, sample in enumerate(dataset):
 
-        print(f"\nEvaluating Faithfulness: {index + 1}/{len(dataset)}")
+        print(
+            f"\nEvaluating Faithfulness: "
+            f"{index + 1}/{len(dataset)}"
+        )
+
+        contexts = sample.retrieved_contexts or []
+
+        if isinstance(contexts, str):
+            contexts = [contexts]
 
         result = await faithfulness_metric.ascore(
             user_input=sample.user_input,
             response=sample.response,
-            retrieved_contexts=sample.retrieved_contexts
+            retrieved_contexts=contexts
         )
 
         scores.append(result.value)
@@ -253,3 +277,61 @@ async def evaluate_answer_correctness(dataset):
         print("Answer Correctness Score:", result.value)
 
     return scores
+
+
+def save_evaluation_report(results):
+
+    """
+    Save all evaluation metric scores into JSON and CSV files.
+    """
+
+    # Create reports folder if it does not exist
+    os.makedirs("reports", exist_ok=True)
+
+    # Calculate average scores
+    report = {}
+
+    for metric_name, scores in results.items():
+
+        average = sum(scores) / len(scores) if scores else 0
+
+        report[metric_name] = {
+            "individual_scores": scores,
+            "average_score": round(average, 3)
+        }
+
+    # Save JSON report
+    json_path = "reports/evaluation_report.json"
+
+    with open(json_path, "w", encoding="utf-8") as file:
+
+        json.dump(report, file, indent=4)
+
+    # Save CSV report
+    csv_path = "reports/evaluation_report.csv"
+
+    with open(csv_path, "w", newline="", encoding="utf-8") as file:
+
+        writer = csv.writer(file)
+
+        writer.writerow([
+            "Metric",
+            "Question Number",
+            "Score"
+        ])
+
+        for metric_name, scores in results.items():
+
+            for index, score in enumerate(scores, start=1):
+
+                writer.writerow([
+                    metric_name,
+                    index,
+                    score
+                ])
+
+    print("\nEvaluation reports saved successfully!")
+
+    print("JSON Report:", json_path)
+
+    print("CSV Report:", csv_path)

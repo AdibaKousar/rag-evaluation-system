@@ -1,0 +1,101 @@
+Metric,Question Number,Score
+Faithfulness,1,0.0
+Faithfulness,2,0.0
+Faithfulness,3,1.0
+Faithfulness,4,1.0
+Faithfulness,5,1.0
+Faithfulness,6,0.75
+Faithfulness,7,1.0
+Faithfulness,8,1.0
+Faithfulness,9,1.0
+Faithfulness,10,0.0
+Faithfulness,11,1.0
+Faithfulness,12,1.0
+Faithfulness,13,0.0
+Faithfulness,14,1.0
+Faithfulness,15,1.0
+Faithfulness,16,0.0
+Faithfulness,17,0.0
+Faithfulness,18,0.0
+Faithfulness,19,0.0
+Faithfulness,20,0.0
+Answer Relevancy,1,0.2051488749496415
+Answer Relevancy,2,0.23780412116867714
+Answer Relevancy,3,0.9999999999998762
+Answer Relevancy,4,0.929011701177252
+Answer Relevancy,5,0.9489551672297232
+Answer Relevancy,6,0.9999999999998659
+Answer Relevancy,7,0.9742936448022381
+Answer Relevancy,8,0.46481131455287966
+Answer Relevancy,9,0.9427281800877158
+Answer Relevancy,10,0.8934967148237959
+Answer Relevancy,11,0.17806520749204927
+Answer Relevancy,12,0.6189772118240414
+Answer Relevancy,13,0.0
+Answer Relevancy,14,0.5087710156233008
+Answer Relevancy,15,0.266813120293184
+Answer Relevancy,16,-0.0
+Answer Relevancy,17,0.0
+Answer Relevancy,18,0.0
+Answer Relevancy,19,-0.0
+Answer Relevancy,20,0.0
+Context Precision,1,0.99999999995
+Context Precision,2,0.99999999995
+Context Precision,3,0.99999999995
+Context Precision,4,0.99999999995
+Context Precision,5,0.99999999995
+Context Precision,6,0.99999999995
+Context Precision,7,0.99999999995
+Context Precision,8,0.99999999995
+Context Precision,9,0.99999999995
+Context Precision,10,0.9999999999
+Context Precision,11,0.99999999995
+Context Precision,12,0.99999999995
+Context Precision,13,0.0
+Context Precision,14,0.99999999995
+Context Precision,15,0.99999999995
+Context Precision,16,0.0
+Context Precision,17,0.0
+Context Precision,18,0.0
+Context Precision,19,0.0
+Context Precision,20,0.0
+Context Recall,1,1.0
+Context Recall,2,1.0
+Context Recall,3,1.0
+Context Recall,4,1.0
+Context Recall,5,1.0
+Context Recall,6,1.0
+Context Recall,7,1.0
+Context Recall,8,1.0
+Context Recall,9,1.0
+Context Recall,10,1.0
+Context Recall,11,1.0
+Context Recall,12,1.0
+Context Recall,13,0.0
+Context Recall,14,1.0
+Context Recall,15,1.0
+Context Recall,16,0.0
+Context Recall,17,0.0
+Context Recall,18,0.0
+Context Recall,19,0.0
+Context Recall,20,0.0
+Answer Correctness,1,0.450471926454591
+Answer Correctness,2,0.42829826433864693
+Answer Correctness,3,0.9711848304318795
+Answer Correctness,4,0.5653596944501629
+Answer Correctness,5,0.9538980183827614
+Answer Correctness,6,0.5322328788021532
+Answer Correctness,7,0.5629927913664228
+Answer Correctness,8,0.5252860554418624
+Answer Correctness,9,0.9212773782894412
+Answer Correctness,10,0.5334333623673686
+Answer Correctness,11,0.7008914562216519
+Answer Correctness,12,0.5470970427913289
+Answer Correctness,13,0.003837668287803185
+Answer Correctness,14,0.9434412659614484
+Answer Correctness,15,0.4818093740386433
+Answer Correctness,16,0.1475707438746365
+Answer Correctness,17,0.15066805353963583
+Answer Correctness,18,0.15636861645267625
+Answer Correctness,19,0.13043573543261808
+Answer Correctness,20,0.15229029454993073

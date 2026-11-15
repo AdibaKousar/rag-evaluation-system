@@ -1,3 +1,4 @@
+
 [
     {
         "question": "What is artificial intelligence?",
@@ -18,5 +19,65 @@
     {
         "question": "What are the applications of artificial intelligence?",
         "reference": "Artificial Intelligence is widely used in healthcare, education, banking, transportation, and agriculture."
+    },
+    {
+        "question": "What is computer vision?",
+        "reference": "Computer Vision is a field of Artificial Intelligence that enables computers to interpret and understand visual information such as images and videos."
+    },
+    {
+        "question": "What is the relationship between artificial intelligence and machine learning?",
+        "reference": "Machine Learning is a subset of Artificial Intelligence that enables systems to learn from data."
+    },
+    {
+        "question": "How does deep learning learn patterns?",
+        "reference": "Deep Learning uses multiple layers of artificial neural networks to learn complex patterns from data."
+    },
+    {
+        "question": "What is the main purpose of natural language processing?",
+        "reference": "Natural Language Processing helps computers understand, interpret, and generate human language."
+    },
+    {
+        "question": "How is artificial intelligence used in healthcare?",
+        "reference": "Artificial Intelligence is used in healthcare to support medical applications such as analyzing information and assisting healthcare professionals."
+    },
+    {
+        "question": "How is artificial intelligence used in education?",
+        "reference": "Artificial Intelligence is used in education to support learning and educational applications."
+    },
+    {
+        "question": "How is artificial intelligence used in transportation?",
+        "reference": "Artificial Intelligence is applied in transportation to support intelligent systems and transportation-related tasks."
+    },
+    {
+        "question": "What type of information does computer vision process?",
+        "reference": "Computer Vision processes visual information such as images and videos."
+    },
+    {
+        "question": "Which field of AI focuses on understanding human language?",
+        "reference": "Natural Language Processing focuses on helping computers understand, interpret, and generate human language."
+    },
+    {
+        "question": "Which technology uses artificial neural networks to learn complex patterns?",
+        "reference": "Deep Learning uses artificial neural networks to learn complex patterns from large amounts of data."
+    },
+    {
+        "question": "What is the capital of France?",
+        "reference": "The provided document does not contain information about the capital of France."
+    },
+    {
+        "question": "Who invented the telephone?",
+        "reference": "The provided document does not contain information about the inventor of the telephone."
+    },
+    {
+        "question": "What is the chemical formula of water?",
+        "reference": "The provided document does not contain information about the chemical formula of water."
+    },
+    {
+        "question": "What is the distance between Earth and the Moon?",
+        "reference": "The provided document does not contain information about the distance between Earth and the Moon."
+    },
+    {
+        "question": "Who is the president of the United States?",
+        "reference": "The provided document does not contain information about the president of the United States."
     }
 ]
